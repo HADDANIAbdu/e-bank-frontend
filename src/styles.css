@@ -1,3 +1,5 @@
 @import "../node_modules/bootstrap-icons/font/bootstrap-icons.min.css";
 @import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
-
+@import "./assets/css/demo.css";
+@import "./assets/vendor/core.css";
+@import "./assets/vendor/theme-default.css";
