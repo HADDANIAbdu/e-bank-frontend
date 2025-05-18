@@ -1,4 +1,4 @@
-import { customer } from "./customer.model";
+import { Customer } from "./customer.model";
 
 export interface AccountDetails {
     accountId:            string;
@@ -25,5 +25,5 @@ export interface AccountDetails {
     overDraft:     number;
     status:        string;
     createdAt:     string;
-    customerDTO:      customer;
+    customerDTO:      Customer;
   }
