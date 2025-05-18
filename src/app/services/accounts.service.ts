@@ -30,4 +30,24 @@ export class AccountsService {
     let data={accountSource, accountDestination, amount, description }
     return this.http.post(environment.backendHost+"/accounts/transfer",data);
   }
+
+  public saveCurrentAccount(data: any) {
+    return this.http.post(environment.backendHost + "/accounts/save/current-account", data);
+  }
+
+  public saveSavingAccount(data: any) {
+    return this.http.post(environment.backendHost + "/accounts/save/saving-account", data);
+  }
+
+  public updateCurrentAccount(id: string, data: any) {
+    return this.http.put(environment.backendHost + `/accounts/update/current-account/${id}`, data);
+  }
+
+  public updateSavingAccount(id: string, data: any) {
+    return this.http.put(environment.backendHost + `/accounts/update/saving-account/${id}`, data);
+  }
+
+  public deleteAccount(id: string) {
+    return this.http.delete(environment.backendHost + `/accounts/delete/${id}`);
+  }
 }

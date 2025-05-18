@@ -1,0 +1,47 @@
+<div class="container mt-2">
+  <div class="card">
+    <div class="card-header">Create Account</div>
+    <div class="card-body">
+      <form [formGroup]="accountFormGroup" (ngSubmit)="handleCreateAccount()">
+        <div class="mb-3">
+          <label class="form-label">Account Type</label>
+          <select formControlName="type" class="form-select">
+            <option value="CURRENT_ACCOUNT">Current Account</option>
+            <option value="SAVING_ACCOUNT">Saving Account</option>
+          </select>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Balance</label>
+          <input type="number" formControlName="balance" class="form-control">
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Customer ID</label>
+          <input type="number" formControlName="customerId" class="form-control">
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Status</label>
+          <select formControlName="status" class="form-select">
+            <option value="CREATED">Created</option>
+            <option value="ACTIVATED">Activated</option>
+            <option value="SUSPENDED">Suspended</option>
+          </select>
+        </div>
+        @if (accountFormGroup.value.type === 'CURRENT_ACCOUNT') {
+          <div class="mb-3">
+            <label class="form-label">Overdraft</label>
+            <input type="number" formControlName="overDraft" class="form-control">
+          </div>
+        }
+        @if (accountFormGroup.value.type === 'SAVING_ACCOUNT') {
+          <div class="mb-3">
+            <label class="form-label">Interest Rate</label>
+            <input type="number" formControlName="interestRate" class="form-control">
+          </div>
+        }
+        <div class="d-grid">
+          <button type="submit" class="btn btn-success">Create Account</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

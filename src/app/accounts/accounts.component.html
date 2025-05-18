@@ -1,5 +1,11 @@
 <div class="container mt-2">
     <div class="row">
+      <div class="col-12 mb-3">
+        <a routerLink="/accounts/create" class="btn btn-primary">
+          <i class="bi bi-plus-circle-fill me-2"></i>
+          Create New Account
+        </a>
+      </div>
       <div class="col col-md-6">
         <div class="card">
           <div class="card-header">Accounts</div>
@@ -145,16 +151,12 @@
                 </td>
                 <td>
                   <div class="d-flex align-items-center">
-                    <form method="get" action="">
-                      <button type="submit" class="btn btn-warning me-2">
-                        <i class="bi bi-pen" style="font-size: 1em; color: #007bff;"></i>
-                      </button>
-                    </form>
-                    <form method="delete" action="">
-                      <button type="submit" class="btn btn-danger">
-                        <i class="bi bi-trash" style="font-size: 1em; color: #007bff;"></i>
-                      </button>
-                    </form>
+                    <a [routerLink]="['/accounts/update', account.id]" [state]="{ account: account }" class="btn btn-warning me-2">
+                      <i class="bi bi-pen" style="font-size: 1em; color: #007bff;"></i>
+                    </a>
+                    <button type="button" class="btn btn-danger" (click)="handleDeleteAccount(account.id)">
+                      <i class="bi bi-trash" style="font-size: 1em; color: #007bff;"></i>
+                    </button>
                   </div>
                 </td>
               </tr>

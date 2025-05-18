@@ -4,10 +4,11 @@ import {AccountsService} from "../services/accounts.service";
 import {catchError, Observable, throwError} from "rxjs";
 import {Account, AccountDetails} from "../model/account.model";
 import {AsyncPipe, DatePipe, DecimalPipe} from "@angular/common";
+import {RouterModule} from "@angular/router";
 
 @Component({
   selector: 'app-accounts',
-  imports: [ReactiveFormsModule, DatePipe, DecimalPipe, AsyncPipe],
+  imports: [ReactiveFormsModule, DatePipe, DecimalPipe, AsyncPipe, RouterModule],
   templateUrl: './accounts.component.html',
   styleUrls: ['./accounts.component.css']
 })
@@ -103,6 +104,21 @@ export class AccountsComponent implements OnInit {
         }
       });
 
+    }
+  }
+
+  handleDeleteAccount(id: string) {
+    if (confirm('Are you sure you want to delete this account?')) {
+      this.accountService.deleteAccount(id).subscribe({
+        next: () => {
+          alert('Account deleted successfully');
+          this.getAllaccounts();
+        },
+        error: (err) => {
+          console.error(err);
+          alert('Error deleting account');
+        }
+      });
     }
   }
 }
