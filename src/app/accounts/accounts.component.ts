@@ -4,13 +4,15 @@ import {AccountsService} from "../services/accounts.service";
 import {catchError, Observable, throwError} from "rxjs";
 import {Account, AccountDetails} from "../model/account.model";
 import {AsyncPipe, DatePipe, DecimalPipe} from "@angular/common";
-import {RouterModule} from "@angular/router";
+import {Router, RouterModule} from "@angular/router";
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-accounts',
   imports: [ReactiveFormsModule, DatePipe, DecimalPipe, AsyncPipe, RouterModule],
   templateUrl: './accounts.component.html',
-  styleUrls: ['./accounts.component.css']
+  styleUrls: ['./accounts.component.css'],
+  standalone: true
 })
 export class AccountsComponent implements OnInit {
   accountFormGroup! : FormGroup;
@@ -21,7 +23,12 @@ export class AccountsComponent implements OnInit {
   errorMessage! :string ;
   accounts: Account[] = [];
 
-  constructor(private fb : FormBuilder, private accountService : AccountsService) { }
+  constructor(
+    private fb : FormBuilder, 
+    private accountService : AccountsService,
+    private authService: AuthService,
+    private router: Router
+  ) { }
 
   getPageNumbers(totalPages: number): number[] {
     return Array.from({length: totalPages}, (_, i) => i + 1);
@@ -120,5 +127,10 @@ export class AccountsComponent implements OnInit {
         }
       });
     }
+  }
+
+  handleLogout() {
+    this.authService.logout();
+    this.router.navigateByUrl('/login');
   }
 }

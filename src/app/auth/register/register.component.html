@@ -1,0 +1,65 @@
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header">
+          <h3 class="text-center">Register</h3>
+        </div>
+        <div class="card-body">
+          <form [formGroup]="registerForm" (ngSubmit)="handleRegister()">
+            <div class="mb-3">
+              <label class="form-label">Name</label>
+              <input type="text" formControlName="name" class="form-control">
+              @if (registerForm.controls['name'].touched && registerForm.controls['name'].errors) {
+                @if (registerForm.controls['name'].errors['required']) {
+                  <span class="text-danger">Name is required</span>
+                }
+                @if (registerForm.controls['name'].errors['minlength']) {
+                  <span class="text-danger">Name must be at least 3 characters</span>
+                }
+              }
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Email</label>
+              <input type="email" formControlName="email" class="form-control">
+              @if (registerForm.controls['email'].touched && registerForm.controls['email'].errors) {
+                @if (registerForm.controls['email'].errors['required']) {
+                  <span class="text-danger">Email is required</span>
+                }
+                @if (registerForm.controls['email'].errors['email']) {
+                  <span class="text-danger">Invalid email format</span>
+                }
+              }
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Password</label>
+              <input type="password" formControlName="password" class="form-control">
+              @if (registerForm.controls['password'].touched && registerForm.controls['password'].errors) {
+                @if (registerForm.controls['password'].errors['required']) {
+                  <span class="text-danger">Password is required</span>
+                }
+                @if (registerForm.controls['password'].errors['minlength']) {
+                  <span class="text-danger">Password must be at least 6 characters</span>
+                }
+              }
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Confirm Password</label>
+              <input type="password" formControlName="confirmPassword" class="form-control">
+              @if (registerForm.controls['confirmPassword'].touched && registerForm.errors?.['passwordMismatch']) {
+                <span class="text-danger">Passwords do not match</span>
+              }
+            </div>
+            @if (errorMessage) {
+              <div class="alert alert-danger">{{errorMessage}}</div>
+            }
+            <div class="d-grid gap-2">
+              <button type="submit" class="btn btn-primary" [disabled]="!registerForm.valid">Register</button>
+              <a routerLink="/login" class="btn btn-link">Already have an account? Login</a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> 
