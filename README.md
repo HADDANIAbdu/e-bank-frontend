@@ -54,6 +54,26 @@ ng e2e
 
 Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
 
+## Aperçu de l'application
+
+### Gestion des comptes
+![Accounts](assets/accounts.png)
+
+### Création d'un compte
+![Create Account](assets/create%20account.png)
+
+### Création d'un client
+![Create Customer](assets/create%20customer.png)
+
+### Création d'une opération
+![Create Operation](assets/create%20operation.png)
+
+### Liste des clients
+![Customers](assets/customers.png)
+
+### Recherche de client
+![Search Customer](assets/search%20customer.png)
+
 ## Additional Resources
 
 For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
